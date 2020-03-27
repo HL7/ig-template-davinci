@@ -8,6 +8,6 @@
   "canonical": "http://github.com/HL7/ig-template-davinci",
   "base": "hl7.fhir.template",
   "dependencies": {
-    "hl7.base.template": "current"
+    "hl7.fhir.template": "current"
   }
 }
