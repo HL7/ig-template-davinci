@@ -7,7 +7,10 @@ This implementation guide is part of a set of interrelated implementation guides
 
 The general flow of activity across all three IGs can be seen in the following diagram:
 
+{% capture image %}
 {% include burdenReduction.svg %}
+{% endcapture %}
+{{ image }}
 
 The guides overlap in the following ways:
 
