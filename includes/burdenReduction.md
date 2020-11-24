@@ -2,8 +2,8 @@
 This implementation guide is part of a set of interrelated implementation guides that are focused on reducing clinician and payer burden.  The Da Vinci 'Burden Reduction' implementation guides are:
 
 1. [Coverage Requirements Discovery (CRD)](http://hl7.org/fhir/us/davinci-crd) which provides decision support to providers at the time they're ordering drugs and labs, making referrals, scheduling appointments, etc.
-2. [Documentation Templates and Rules (DTR)](http://hl7.org/fhir/us/davinci-dtr) which allows providers to download 'smart' questionnaires (and uses a [SMART on FHIR](http://www.hl7.org/fhir/smart-app-launch/) app or EHR app that executes them to gather information relevant to a performed or planned service).
-3. [Prior Authorization Support (PAS)](http://hl7.org/fhir/us/davinci-pas) allows provider systems to send (and payer systems to receive) prior authorization requests using FHIR, while still meeting regulatory mandates to have X12 278 used to transport the prior authorization, potentially simplifying processing for either or both exchange partner.
+2. [Documentation Templates and Rules (DTR)](http://hl7.org/fhir/us/davinci-dtr) which allows providers to download 'smart' questionnaires, rules (e.g. CQL), and provides a [SMART on FHIR](http://www.hl7.org/fhir/smart-app-launch/) app or EHR app that executes them to gather information relevant to a performed or planned service.  Execution of the questionnaires and rules may also be performed by an application that is part of the provider's EHR.
+3. [Prior Authorization Support (PAS)](http://hl7.org/fhir/us/davinci-pas) allows provider systems to send (and payer systems to receive) prior authorization requests using FHIR, while still meeting regulatory mandates to have X12 278 used, where required, to transport the prior authorization, potentially simplifying processing for either or both exchange partner.
 
 The general flow of activity across all three IGs can be seen in the following diagram:
 
