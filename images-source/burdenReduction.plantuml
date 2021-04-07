@@ -21,9 +21,14 @@ note right of EHR #white
 end note
 "Provider" -> "EHR" : Create order/referral/etc.
 Activate EHR
-  "EHR" -> "Hooks Service" : Is there anything provider should know?
+Activate "Hooks Service"
+  "EHR" -> "Hooks Service" : Is there anything provider should know? 
   "Hooks Service" <--> "EHR repository" : Retrieve patient data
+Activate "Rules repository"
+   "Hooks Service" -> "Rules repository" : Retrieve Hooks Service rules
   "EHR" <- "Hooks Service" : Yes, e.g.:
+Deactivate "Rules repository"  
+Deactivate "Hooks Service"
   note right of EHR: No coverage requirements; or
   note right of EHR: See __link__ to opioid guidelines; or
   note right of EHR: That lab test was already run, results are here:... ; or
