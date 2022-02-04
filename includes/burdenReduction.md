@@ -18,8 +18,8 @@ The guides overlap in the following ways:
 * DTR can be triggered by a CRD hook.  It allows captures of information needed to support prior authorization requests and that can be included as part of the request
 * PAS can be used to submit a prior authorization based on a requirement identified by CRD and using information gathered by DTR
 
-All three implementation guides can be used together and intersect in that they perform business functions related to prior authorization.  However the first two IGs also offer functionality that's
-unrelated to prior authorization.  The guides can function independently in a number of ways:
+All three implementation guides can be used together and intersect in that they perform business functions related to prior authorization.  However, the first two IGs also offer functionality that's
+unrelated to prior authorization.  The guides can function independently in several ways:
 
 * CRD can provide information unrelated to prior authorization and 'special documentation'.  For example, providing an estimate of patient cost, suggesting appropriate use criteria, identifying duplicate therapies, etc.
 * CRD can identify a need for prior authorization and/or special documentation but, instead of linking to a DTR solution, might simply point to a website or other documentation with guidance on the appropriate forms to complete
@@ -27,4 +27,4 @@ unrelated to prior authorization.  The guides can function independently in a nu
 * Information gathered by DTR might be used for direct submission of prior authorizations to support X12 278 transactions or using alternative submission means (e.g. fax, mail) if supported/required by the relevant payer
 * PAS can be used for prior authorization submissions where the need to submit a prior authorization was identified without CRD (either known in advance or identified by other means) and/or the supplemental information to be provided was identified and gathered outside of or in addition to DTR.
 
-As such, implementers can choose to roll out these three implementation guides in whatever order or combination best meets their particular business objectives - though obviously coordinating with their communication partners so that there are other systems to interoperate with will also be important.
+As such, implementers can choose to roll out these three implementation guides in whatever order or combination best meets their business objectives - though obviously coordinating with their communication partners so that there are other systems to interoperate with will also be important.
