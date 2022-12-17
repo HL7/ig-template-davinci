@@ -1,13 +1,13 @@
 ﻿{
-  "name": "hl7.davinci.template",
-  "type": "fhir.template",
-  "license": "CC0-1.0",
-  "description": "HL7 Da Vinci Template - for use with HL7 Da Vinci-published FHIR IGs",
-  "author": "http://hl7.org/fhir",
-  "canonical": "http://fhir.org/templates/hl7.davinci.template",
-  "base": "hl7.fhir.template",
-  "dependencies": {
-    "hl7.fhir.template": "current"
+  "name" : "hl7.davinci.template",
+  "type" : "fhir.template",
+  "license" : "CC0-1.0",
+  "description" : "HL7 Da Vinci Template - for use with HL7 Da Vinci-published FHIR IGs",
+  "author" : "http://hl7.org/fhir",
+  "canonical" : "http://fhir.org/templates/hl7.davinci.template",
+  "base" : "hl7.fhir.template",
+  "dependencies" : {
+    "hl7.fhir.template" : "current"
   },
-  "version": "0.3.0"
+  "version" : "0.4.0"
 }
