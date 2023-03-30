@@ -15,16 +15,15 @@ The general flow of activity across all three IGs can be seen in the following d
 The guides overlap in the following ways:
 
 * CRD can indicate whether prior authorization is or is not required and whether there are or are not 'special documentation requirements' related to the planned service.  The CDS Hook cards returned by CRD can include a link to a DTR SMART application that will then guide the clinician in capturing the relevant information
-* DTR can be triggered by a CRD hook.  It allows captures of information needed to support prior authorization requests and that can be included as part of the request
-* PAS can be used to submit a prior authorization based on a requirement identified by CRD and using information gathered by DTR
+* DTR can be triggered by a CRD hook.  It allows the capture of information needed to support prior authorization requests and that can be included as part of the request
+* PAS can be used to submit a prior authorization based on a requirement identified by CRD and using information gathered by DTR.  If the Prior Authorization request includes the DTR response, it will include a reference to the DTR bundle.  The PA submission will include the DTR bundle.  The X12 278 request will not point to the DTR bundle.
 
-All three implementation guides can be used together and intersect, in that they perform business functions related to prior authorization.  However, the first two IGs also offer functionality that's
+All three implementation guides should be used together to perform business functions related to prior authorization.  However, the first two IGs also offer functionality that's
 unrelated to prior authorization.  The guides can function independently in several ways:
 
 * CRD can provide information unrelated to prior authorization and 'special documentation'.  For example, providing an estimate of patient cost, suggesting appropriate use criteria, identifying duplicate therapies, etc.
-* CRD can identify a need for prior authorization and/or special documentation but, instead of linking to a DTR solution, might simply point to a website or other documentation with guidance on the appropriate forms to complete.
-* DTR might be invoked directly by a clinician who either knows or is informed by means other than CRD about the requirement to gather additional documentation.
-* Information gathered by DTR might be used for direct submission of prior authorizations to support X12 278 transactions or using alternative submission means (e.g. fax, mail) if supported/required by the relevant payer.
-* PAS can be used for prior authorization submissions where the need to submit a prior authorization was identified without CRD (either known in advance or identified by other means) and/or the supplemental information to be provided was identified and gathered outside of or in addition to DTR.
+* DTR might be invoked directly by a clinician to validate documentation regarding an item or service meets a responsible payer’s requirements.
+* Information gathered by DTR will normally be used for submission via PAS to support a prior authorization request.  However, the Questionnaire Response and its associated references may be exchange, using other methods,  with a preforming provider, payer or other entity to supply medical necessity documentation.
+* PAS can be used for prior authorization submissions even if the requirement is not identified by CRD and the supporting documentation is exchange via anther method.
 
-As such, implementers can choose to roll out these three implementation guides in whatever order or combination best meets their business objectives, though obviously coordinating with their communication partners so that there are other systems to interoperate with will also be important.
+The greatest benefit to clinical workflow and reduction of manual intervention is achieved by implementing all three IGs at the same time.  However, implementers can choose to roll out these three implementation guides in whatever order or combination best meets their business objectives.
