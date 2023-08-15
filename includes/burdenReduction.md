@@ -22,8 +22,8 @@ All three implementation guides should be used together to perform business func
 unrelated to prior authorization.  The guides can function independently in several ways:
 
 * CRD can provide information unrelated to prior authorization and 'special documentation'.  For example, providing an estimate of patient cost, suggesting appropriate use criteria, identifying duplicate therapies, etc.
-* DTR might be invoked directly by a clinician to validate documentation regarding an item or service meets a responsible payer’s requirements.
-* Information gathered by DTR will normally be used for submission via PAS to support a prior authorization request.  However, the Questionnaire Response and its associated references may be exchange, using other methods,  with a preforming provider, payer or other entity to supply medical necessity documentation.
-* PAS can be used for prior authorization submissions even if the requirement is not identified by CRD and the supporting documentation is exchange via anther method.
+* DTR might be invoked directly by a clinician to validate documentation regarding an item or service that meets a responsible payer’s requirements.
+* Information gathered by DTR will normally be used for submission via PAS to support a prior authorization request.  However, the Questionnaire Response and its associated references may be exchanged, using other methods,  with a performing provider, payer, or other entity to supply medical necessity documentation.
+* PAS can be used for prior authorization submissions even if the requirement is not identified by CRD and the supporting documentation is exchanged via another method.
 
 The greatest benefit to clinical workflow and reduction of manual intervention is achieved by implementing all three IGs at the same time.  However, implementers can choose to roll out these three implementation guides in whatever order or combination best meets their business objectives.
