@@ -17,7 +17,7 @@ The guides overlap in the following ways:
 
 * CRD can indicate whether prior authorization is or is not required and whether there are or are not ‘special documentation requirements’ related to the planned service. The CDS Hook system actions can indicate that additional clinical and/or administrative information needs to be captured, allowing the EHR to prompt the appropriate user(s) to launch the DTR process to guide the user(s) in capturing the relevant information.
 * The need for DTR is indicated in an extension created by a CRD system action. DTR allows the capture of information needed to support prior authorization requests and that can be included as part of such requests in PAS.
-* PAS can be used to submit a prior authorization based on a requirement identified by CRD and include information requested by the payer in the form for a QuestionnaireResponse Bundle.  The QuestionnaireResponse Bundle is included in the PAS request bundle and reference by the PA profile on the claim as .supportingInformation.  The entire PAS bundle passed to the payer include the QuestionnaireResponse Bundle.
+* PAS can be used to submit a prior authorization based on a requirement identified by CRD and include information requested by the payer in the form for a QuestionnaireResponse Bundle.  The QuestionnaireResponse Bundle is included in the PAS request bundle and referenced by the PA profile on the claim as .supportingInformation.  The entire PAS bundle passed to the payer includes the QuestionnaireResponse Bundle.
 
 
 All three implementation guides should be used together to perform business functions related to prior authorization.  However, the first two IGs also offer functionality that's
