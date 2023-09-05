@@ -38,9 +38,9 @@ Deactivate "Hooks Service"
   end note
 Deactivate EHR
 == Documentation, Templates & Rules (DTR) ==
-"Provider" -> "EHR": Click 'launch' on SMART App card
+"Provider" -> "EHR": User launches DTR
 Activate "SMART app"
-  "EHR" -> "SMART app": Launch SMART app
+  "EHR" -> "SMART app": Launch DTR SMART app/function
   "SMART app" -> "Rules repository": Retrieve Questionnaire/CQL rules
   "SMART app" -> "EHR repository": Retrieve data to populate QuestionnaireResponse/execute CQL
   "SMART app" <- "Provider": User verifies data & QuestionnaireResponse
