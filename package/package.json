@@ -1,4 +1,4 @@
-﻿{
+{
   "name" : "hl7.davinci.template",
   "type" : "fhir.template",
   "license" : "CC0-1.0",
@@ -9,5 +9,5 @@
   "dependencies" : {
     "hl7.fhir.template" : "current"
   },
-  "version" : "0.6.0"
+  "version" : "0.7.0"
 }
