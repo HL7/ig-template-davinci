@@ -7,7 +7,7 @@ box "Clinical System" #LightGreen
 end box
 box "Payer" #LightBlue
   participant "Hooks Service"
-  participant "SMART app"
+  participant "DTR app"
   control converter as "Prior Auth\nconverter"
   database "Rules repository"
   participant processor as "Prior Auth\nprocessor"
@@ -17,42 +17,66 @@ end box
 
 note right of EHR #white
   For "what if" scenarios
-  EHR is played by SMART app
+  EHR is played by DTR app
 end note
-"Provider" -> "EHR" : Create order/referral/etc.
+"Provider" -> "EHR" : Create or update\norder / referral / etc.
 Activate EHR
-Activate "Hooks Service"
   "EHR" -> "Hooks Service" : Is there anything provider should know? 
-  "Hooks Service" <--> "EHR repository" : Retrieve patient data
-Activate "Rules repository"
-   "Hooks Service" -> "Rules repository" : Retrieve Hooks Service rules
-  "EHR" <- "Hooks Service" : Yes, e.g.:
+Activate "Hooks Service"
+  "Hooks Service" -> "Rules repository" : Retrieve member coverage and rules
+  "Hooks Service" --> "EHR repository" : Retrieve patient data
 Deactivate "Rules repository"  
+  "Hooks Service" -> processor : Pre-emptive prior authorization?
+Activate processor
+  "Hooks Service" <- processor : No / Yes(with auth number):
+Deactivate processor
+  "EHR" <- "Hooks Service" : Cards, system actions:
 Deactivate "Hooks Service"
-  note right of EHR: No coverage requirements; or
-  note right of EHR: See __link__ to opioid guidelines; or
-  note right of EHR: That lab test was already run, results are here:... ; or
-  note right of EHR #aqua
+  "EHR" -> "Provider": "Be aware that:"
+  note right of Provider: No coverage requirements; or
+  note right of Provider: Prior auth is needed, here it is; and/or
+  note right of Provider: See __link__ to opioid guidelines; and/or
+  note right of Provider: That lab test was already run, results are here:... ; and/or
+  note right of Provider #aqua
     There are documents to fill out
-    Click __here__ to launch SMART app 
+    Click __here__ to launch DTR
   end note
 Deactivate EHR
 == Documentation, Templates & Rules (DTR) ==
-"Provider" -> "EHR": Click 'launch' on SMART App card
-Activate "SMART app"
-  "EHR" -> "SMART app": Launch SMART app
-  "SMART app" -> "Rules repository": Retrieve Questionnaire/CQL rules
-  "SMART app" -> "EHR repository": Retrieve data to populate QuestionnaireResponse/execute CQL
-  "SMART app" <- "Provider": User verifies data & QuestionnaireResponse
-  "SMART app" -> "EHR repository": Store completed QuestionnaireResponse/other info
-Deactivate "SMART app"
+"Provider" -> "EHR": Launch DTR
+  "EHR" -> "DTR app": Launch DTR (app or internal)
+Activate "DTR app"
+  "DTR app" <-> "Rules repository": Get Questionnaire package\n(Questionnaires,\nValueSets, Libraries)
+Activate "Rules repository"
+  "DTR app" -> "EHR repository": Retrieve data to populate\nQuestionnaireResponse / execute CQL
+Activate Provider
+  "DTR app" --> "Rules repository": Get next-question
+  "Rules repository" --> processor : Grant prior auth?
+Activate processor
+  "Rules repository" <-- processor : No /\nYes(w/ number)
+Deactivate processor
+  "DTR app" <-- "Rules repository": Updated Questionnaire\nw/ new question(s)
+  "DTR app" <- "Provider": User completes & verifies QuestionnaireResponse
+Deactivate Provider
+Deactivate "Rules repository"
+  "DTR app" -> "EHR repository": Store completed QuestionnaireResponse
+Deactivate "DTR app"
 == Prior Authorization Support (PAS) ==
 Provider -> EHR: "Request prior auth"
+alt FHIR Direct
+  EHR -> processor: FHIR prior auth request\n//(with completed form(s) from DTR process)//
+Activate processor
+  EHR <- processor: FHIR prior auth response
+Deactivate processor
+Else FHIR w/ X12 conversion
+  EHR -> converter: FHIR prior auth request\n//(with completed form(s) from DTR process)//
 Activate converter
-  EHR -> converter: FHIR prior auth request //(with completed form(s) from DTR process)//
   converter -> processor: "X12 (+FHIR) prior auth request\nwith completed form(s)"
+Activate processor
   processor -> converter: X12 prior auth response
+Deactivate processor
   converter -> EHR: FHIR prior auth response
 Deactivate converter
+End
 EHR -> Provider: Display prior auth response
 @enduml
