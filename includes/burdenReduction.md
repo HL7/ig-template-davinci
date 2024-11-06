@@ -11,7 +11,7 @@ The general flow of activity across all three IGs can be seen in the following d
 {% capture image %}
 {% include burdenReduction.svg %}
 {% endcapture %}
-{{ image | remove_first: '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'}}
+{{ image | remove_first: '<?xml version="1.0" encoding="us-ascii" standalone="no"?>'}}
 
 The guides overlap in the following ways:
 
