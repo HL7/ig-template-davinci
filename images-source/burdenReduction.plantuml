@@ -7,7 +7,7 @@ box "Clinical System" #LightGreen
 end box
 box "Payer" #LightBlue
   participant "Hooks Service"
-  participant "DTR app"
+  participant "DTR client"
   control converter as "Prior Auth\nconverter"
   database "Rules repository"
   participant processor as "Prior Auth\nprocessor"
@@ -17,7 +17,7 @@ end box
 
 note right of EHR #white
   For "what if" scenarios
-  EHR is played by DTR app
+  EHR is played by DTR client
 end note
 "Provider" -> "EHR" : Create or update\norder / referral / etc.
 Activate EHR
@@ -44,23 +44,23 @@ Deactivate "Hooks Service"
 Deactivate EHR
 == Documentation, Templates & Rules (DTR) ==
 "Provider" -> "EHR": Launch DTR
-  "EHR" -> "DTR app": Launch DTR (app or internal)
-Activate "DTR app"
-  "DTR app" <-> "Rules repository": Get Questionnaire package\n(Questionnaires,\nValueSets, Libraries)
+  "EHR" -> "DTR client": Launch DTR (app or internal)
+Activate "DTR client"
+  "DTR client" <-> "Rules repository": Get Questionnaire package\n(Questionnaires,\nValueSets, Libraries)
 Activate "Rules repository"
-  "DTR app" -> "EHR repository": Retrieve data to populate\nQuestionnaireResponse / execute CQL
+  "DTR client" -> "EHR repository": Retrieve data to populate\nQuestionnaireResponse / execute CQL
 Activate Provider
-  "DTR app" --> "Rules repository": Get next-question
+  "DTR client" --> "Rules repository": Get next-question
   "Rules repository" --> processor : Grant prior auth?
 Activate processor
   "Rules repository" <-- processor : No /\nYes(w/ number)
 Deactivate processor
-  "DTR app" <-- "Rules repository": Updated Questionnaire\nw/ new question(s)
-  "DTR app" <- "Provider": User completes & verifies QuestionnaireResponse
+  "DTR client" <-- "Rules repository": Updated Questionnaire\nw/ new question(s)
+  "DTR client" <- "Provider": User completes & verifies QuestionnaireResponse
 Deactivate Provider
 Deactivate "Rules repository"
-  "DTR app" -> "EHR repository": Store completed QuestionnaireResponse
-Deactivate "DTR app"
+  "DTR client" -> "EHR repository": Store completed QuestionnaireResponse
+Deactivate "DTR client"
 == Prior Authorization Support (PAS) ==
 Provider -> EHR: "Request prior auth"
 alt FHIR Direct
