@@ -13,7 +13,7 @@
         <xsl:with-param name="details" select="concat($prefix, 'must include a reference to the FHIR core conformance language page - http://hl7.org/fhir/R4/conformance-rules.html#conflang.')"/>
       </xsl:call-template>
     </xsl:if>
-    <xsl:if test="not(descendant::link[(starts-with(@value,'http://hl7.org/fhir/us/davinci-hrex/') or starts-with(@value,'https://build.fhir.org/ig/HL7/davinci-ehrx/')) and substring(@value, string-length(@value)-17)='/conformance.html'])">
+    <xsl:if test="not(descendant::link[(starts-with(@value,'http://hl7.org/fhir/us/davinci-hrex/') or starts-with(@value,'https://build.fhir.org/ig/HL7/davinci-ehrx/')) and substring(@value, string-length(@value)-16)='/conformance.html'])">
       <xsl:call-template name="davinciIssue">
         <xsl:with-param name="details" select="concat($prefix, 'needs to include a link to the HRex conformance.html page.')"/>
       </xsl:call-template>
