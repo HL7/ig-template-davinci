@@ -19,16 +19,21 @@
       </xsl:call-template>
     </xsl:if>
     <xsl:choose>
-      <xsl:when test="count(links/section[@value='MustSupport'])=0">
+      <xsl:when test="count(links/section[@title='MustSupport'])=0">
         <xsl:call-template name="davinciIssue">
           <xsl:with-param name="details" select="concat($prefix, 'should include an h3 section titled MustSupport.')"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:for-each select="links/section[@value='Must Support']">
+        <xsl:for-each select="links/section[@title='MustSupport']">
           <xsl:if test="not(link[(starts-with(@value,'http://hl7.org/fhir/us/davinci-hrex/') or starts-with(@value,'https://build.fhir.org/ig/HL7/davinci-ehrx/')) and contains(@value, 'conformance.html#mustsupport')])">
             <xsl:call-template name="davinciIssue">
               <xsl:with-param name="details" select="concat($prefix, 'Must Support section needs to include a link to the HRex conformance.html#mustsupport section.')"/>
+            </xsl:call-template>
+          </xsl:if>
+          <xsl:if test="not(link[starts-with(@value,'http://hl7.org/fhir/us/core/') and contains(@value, 'must-support.html')])">
+            <xsl:call-template name="davinciIssue">
+              <xsl:with-param name="details" select="concat($prefix, 'Must Support section needs to include a link to the US-Core must-support.html page.')"/>
             </xsl:call-template>
           </xsl:if>
         </xsl:for-each>
