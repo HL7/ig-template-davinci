@@ -92,27 +92,27 @@ Ensure conformance language page says "In order to conform to this implementatio
         </linecontains>
       </filterchain>
     </concat>
-    <xslt in="${ig.template}/onCheck.read.xml" out="${ig.template}/oncheck-validation-davinci-read.json" style="${ig.scripts}/onCheck.ig.davinci.checkread.xslt">
+    <xslt in="${ig.template}/onCheck.read.xml" out="${ig.template}/oncheck-validation-davinci-read.json" style="${ig.scripts}/onCheck.ig.davinci.checkRead.xslt">
       <param name="location" expression="${reading_file}"/>
     </xslt>
   </target>
   <target name="onCheck.davinci.checkProject" depends="onCheck.davinci.findProjectLinks" if="project_file">
-    <xslt in="${ig.template}/onCheck.links.project.xml" out="${ig.template}/oncheck-validation-davinci-project.json" style="${ig.scripts}/onCheck.ig.davinci.checkproject.xslt">
+    <xslt in="${ig.template}/onCheck.links.project.xml" out="${ig.template}/oncheck-validation-davinci-project.json" style="${ig.scripts}/onCheck.ig.davinci.checkProject.xslt">
       <param name="location" expression="${project_file}"/>
     </xslt>
   </target>
   <target name="onCheck.davinci.checkConformance" depends="onCheck.davinci.findConformanceLinks" if="conformance_file">
-    <xslt in="${ig.template}/onCheck.conformance.xml" out="${ig.template}/oncheck-validation-davinci-conformance.json" style="${ig.scripts}/onCheck.ig.davinci.checkconformance.xslt">
+    <xslt in="${ig.template}/onCheck.conformance.xml" out="${ig.template}/oncheck-validation-davinci-conformance.json" style="${ig.scripts}/onCheck.ig.davinci.checkConformance.xslt">
       <param name="location" expression="${conformance_file}"/>
     </xslt>
   </target>
   <target name="onCheck.davinci.checkSecurity" depends="onCheck.davinci.findSecurityLinks" if="security_file">
-    <xslt in="${ig.template}/onCheck.links.security.xml" out="${ig.template}/oncheck-validation-davinci-security.json" style="${ig.scripts}/onCheck.ig.davinci.checksecurity.xslt">
+    <xslt in="${ig.template}/onCheck.links.security.xml" out="${ig.template}/oncheck-validation-davinci-security.json" style="${ig.scripts}/onCheck.ig.davinci.checkSecurity.xslt">
       <param name="location" expression="${security_file}"/>
     </xslt>
   </target>
   <target name="onCheck.davinci.checkDownloads" depends="onCheck.davinci.findDownloadLinks" if="downloads_file">
-    <xslt in="${ig.template}/onCheck.links.downloads.xml" out="${ig.template}/oncheck-validation-davinci-downloads.json" style="${ig.scripts}/onCheck.ig.davinci.checkdownloads.xslt">
+    <xslt in="${ig.template}/onCheck.links.downloads.xml" out="${ig.template}/oncheck-validation-davinci-downloads.json" style="${ig.scripts}/onCheck.ig.davinci.checkDownloads.xslt">
       <param name="location" expression="${downloads_file}"/>
     </xslt>
   </target>
@@ -128,7 +128,7 @@ Ensure conformance language page says "In order to conform to this implementatio
         </linecontains>
       </filterchain>
     </concat>
-    <xslt in="${ig.template}/onCheck.change.xml" out="${ig.template}/oncheck-validation-davinci-change.json" style="${ig.scripts}/onCheck.ig.davinci.checkchange.xslt">
+    <xslt in="${ig.template}/onCheck.change.xml" out="${ig.template}/oncheck-validation-davinci-change.json" style="${ig.scripts}/onCheck.ig.davinci.checkChange.xslt">
       <param name="location" expression="${change_file}"/>
     </xslt>
   </target>
