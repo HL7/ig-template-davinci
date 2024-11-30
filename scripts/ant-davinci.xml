@@ -77,7 +77,7 @@ Ensure conformance language page says "In order to conform to this implementatio
     <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${dir.output}/${change_file}" out="${ig.template}/onCheck.links.change.xml"/>
   </target>
   <target name="onCheck.davinci.checkHome" depends="onCheck.davinci.findHomeLinks">
-    <xslt style="${ig.scripts}/onCheck.ig.davinci.checkhome.xslt" in="${ig.template}/onCheck.links.home.xml" out="${ig.template}/oncheck-validation-davinci-home.json"/>
+    <xslt style="${ig.scripts}/onCheck.ig.davinci.checkHome.xslt" in="${ig.template}/onCheck.links.home.xml" out="${ig.template}/oncheck-validation-davinci-home.json"/>
   </target>
   <target name="onCheck.davinci.checkRead" depends="onCheck.davinci.findReadLinks" if="reading_file">
     <xslt style="${ig.scripts}/onCheck.ig.davinci.findResources.xslt" in="${ig.template}/onGenerate-ig-working.xml" out="${ig.template}/davinci.resources.xml"/>
