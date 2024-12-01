@@ -215,9 +215,9 @@
             </xsl:when>
             <xsl:otherwise>
               <xsl:for-each select="h:ul/h:li/h:a[(normalize-space(text())='Discussion Forum')]">
-                <xsl:if test="not(starts-with(@href, 'https://chat.fhir.org/#narrow/stream/'))">
+                <xsl:if test="not(starts-with(@href, 'https://chat.fhir.org/#narrow/stream/') or starts-with(@href, 'https://chat.fhir.org/#narrow/channel/'))">
                   <xsl:call-template name="davinciIssue">
-                    <xsl:with-param name="details" select="'The Discussion Forum link must start with https://chat.fhir.org/#narrow/stream/'"/>
+                    <xsl:with-param name="details" select="'The Discussion Forum link must start with https://chat.fhir.org/#narrow/stream/' or '.../channel/'"/>
                   </xsl:call-template>
                 </xsl:if>
               </xsl:for-each>

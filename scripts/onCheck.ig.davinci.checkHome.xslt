@@ -31,7 +31,7 @@
     <xsl:choose>
       <xsl:when test="count(section[@title='Intellectual Property Considerations'])=0">
         <xsl:call-template name="davinciIssue">
-          <xsl:with-param name="details" select="concat($prefix, 'must include an h3 section called IP Considerations.')"/>
+          <xsl:with-param name="details" select="concat($prefix, 'must include an h3 section called Intellectual Property Considerations.')"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
