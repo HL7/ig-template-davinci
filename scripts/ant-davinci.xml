@@ -42,19 +42,25 @@ Ensure conformance language page says "In order to conform to this implementatio
     <echo message="reading file: ${reading_file}"/>
   </target>
   <target name="onCheck.davinci.findHomeLinks" depends="onCheck.davinci.findFiles">
-    <copy file="output/index.html" tofile="${ig.template}/index.html"/>
+    <copy file="${dir.output}/index.html" tofile="${ig.template}/index.html"/>
     <replace file="${ig.template}/index.html" token="&lt;!DOCTYPE HTML>" value="${htmlEntries}"/>
     <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${ig.template}/index.html" out="${ig.template}/onCheck.links.home.xml"/>
   </target>
   <target name="onCheck.davinci.findReadLinks" depends="onCheck.davinci.findFiles" if="reading_file">
-    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${dir.output}/${reading_file}" out="${ig.template}/onCheck.links.read.xml"/>
+    <copy file="${dir.output}/${reading_file}" tofile="${ig.template}/${reading_file}"/>
+    <replace file="${ig.template}/${reading_file}" token="&lt;!DOCTYPE HTML>" value="${htmlEntries}"/>
+    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${ig.template}/${reading_file}" out="${ig.template}/onCheck.links.read.xml"/>
   </target>
   <target name="onCheck.davinci.findProjectLinks" depends="onCheck.davinci.findFiles" if="project_file">
-    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${dir.output}/${project_file}" out="${ig.template}/onCheck.links.project.xml"/>
+    <copy file="${dir.output}/${project_file}" tofile="${ig.template}/${project_file}"/>
+    <replace file="${ig.template}/${project_file}" token="&lt;!DOCTYPE HTML>" value="${htmlEntries}"/>
+    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${ig.template}/${project_file}" out="${ig.template}/onCheck.links.project.xml"/>
   </target>
   <target name="onCheck.davinci.findConformanceLinks" depends="onCheck.davinci.findFiles" if="conformance_file">
     <xslt style="${ig.scripts}/onCheck.ig.davinci.findCapabilities.xslt" in="${ig.template}/onGenerate-ig-working.xml" out="${ig.template}/davinci.capabilities.xml"/>
-    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${dir.output}/${conformance_file}" out="${ig.template}/onCheck.links.conformance.xml"/>
+    <copy file="${dir.output}/${conformance_file}" tofile="${ig.template}/${conformance_file}"/>
+    <replace file="${ig.template}/${conformance_file}" token="&lt;!DOCTYPE HTML>" value="${htmlEntries}"/>
+    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${ig.template}/${conformance_file}" out="${ig.template}/onCheck.links.conformance.xml"/>
     <concat encoding="UTF-8" destfile="${ig.template}/onCheck.conformance.xml" fixlastline="yes">
       <fileset file="${ig.template}/onCheck.links.conformance.xml"/>
       <fileset file="${ig.template}/davinci.capabilities.xml"/>
@@ -68,13 +74,19 @@ Ensure conformance language page says "In order to conform to this implementatio
     </concat>
   </target>
   <target name="onCheck.davinci.findSecurityLinks" depends="onCheck.davinci.findFiles" if="security_file">
-    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${dir.output}/${security_file}" out="${ig.template}/onCheck.links.security.xml"/>
+    <copy file="${dir.output}/${security_file}" tofile="${ig.template}/${security_file}"/>
+    <replace file="${ig.template}/${security_file}" token="&lt;!DOCTYPE HTML>" value="${htmlEntries}"/>
+    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${ig.template}/${security_file}" out="${ig.template}/onCheck.links.security.xml"/>
   </target>
   <target name="onCheck.davinci.findDownloadLinks" depends="onCheck.davinci.findFiles" if="downloads_file">
-    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${dir.output}/${downloads_file}" out="${ig.template}/onCheck.links.downloads.xml"/>
+    <copy file="${dir.output}/${downloads_file}" tofile="${ig.template}/${downloads_file}"/>
+    <replace file="${ig.template}/${downloads_file}" token="&lt;!DOCTYPE HTML>" value="${htmlEntries}"/>
+    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${ig.template}/${downloads_file}" out="${ig.template}/onCheck.links.downloads.xml"/>
   </target>
   <target name="onCheck.davinci.findChangeLinks" depends="onCheck.davinci.findFiles" if="change_file">
-    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${dir.output}/${change_file}" out="${ig.template}/onCheck.links.change.xml"/>
+    <copy file="${dir.output}/${change_file}" tofile="${ig.template}/${change_file}"/>
+    <replace file="${ig.template}/${change_file}" token="&lt;!DOCTYPE HTML>" value="${htmlEntries}"/>
+    <xslt style="${ig.scripts}/onCheck.ig.davinci.findSectionLinks.xslt" in="${ig.template}/${change_file}" out="${ig.template}/onCheck.links.change.xml"/>
   </target>
   <target name="onCheck.davinci.checkHome" depends="onCheck.davinci.findHomeLinks">
     <xslt style="${ig.scripts}/onCheck.ig.davinci.checkHome.xslt" in="${ig.template}/onCheck.links.home.xml" out="${ig.template}/oncheck-validation-davinci-home.json"/>
