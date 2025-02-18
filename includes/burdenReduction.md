@@ -4,14 +4,14 @@ This implementation guide is part of a set of interrelated implementation guides
 1. [Coverage Requirements Discovery (CRD)](http://hl7.org/fhir/us/davinci-crd) which provides decision support to providers at the time they're ordering diagnostics, specifying treatments, making referrals, scheduling appointments, etc.
 2. [Documentation Templates and Rules (DTR)](http://hl7.org/fhir/us/davinci-dtr) which allows providers to download 'smart' questionnaires, rules (e.g. CQL), and provides a [SMART on FHIR](http://www.hl7.org/fhir/smart-app-launch/) app or EHR app that executes them to gather information relevant to a performed or planned service. Execution of the questionnaires and rules may also be performed by an application that is part of the provider's EHR.
 3. [Prior Authorization Support (PAS)](http://hl7.org/fhir/us/davinci-pas) allows provider systems to send (and payer systems to receive) prior authorization requests using FHIR, while still meeting regulatory mandates to have X12 278 used, where required, to transport the prior authorization, potentially simplifying processing for either or both exchange partners.
-4. [Clinical Data Exchange (CDex)](https://hl7.org/fhir/us/davinci-cdex/index.html) supports the launch of DTR to gather documentation through the CDex Task Data Request Profile, which provides the questionnaire `Task.input` reference to Communicate to the provider a URL of a data request FHIR Questionnaire, and the 'data-request-questionnaire' `Task.code` which indicates the provider system uses DTR to complete the Questionnaire referenced in the questionnaire input parameter.
+4. [Clinical Data Exchange (CDex)](https://hl7.org/fhir/us/davinci-cdex/index.html) documents launching DTR to gather additional information ("attachments").  The portion of CDex that is relevant to Burden Reduction is the use of the PAS Task profile.  The PAS Task Profile uses the launching of DTR to communicate to the provider a URL of a data request FHIR Questionnaire. The Task.code indicates to the provider system to use DTR to complete the Questionnaire, and the URL of the Questionnaire "package" is communicated in Task.input.
 
 The general flow of activity across all three IGs can be seen in the following diagram:
 
 {% capture image %}
 {% include burdenReduction.svg %}
 {% endcapture %}
-{{ image | remove_first: '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'}}
+{{ image | remove_first: '<?xml version="1.0" encoding="us-ascii" standalone="no"?>'}}
 
 The guides overlap in the following ways:
 
@@ -19,7 +19,7 @@ The guides overlap in the following ways:
 * The need for DTR is indicated in an extension created by a CRD system action. DTR allows the capture of information needed to support prior authorization requests and that can be included as part of such requests in PAS.
 * PAS can be used to submit a prior authorization based on a requirement identified by CRD and include information requested by the payer in the form of a QuestionnaireResponse Bundle. The QuestionnaireResponse Bundle is included in the PAS request bundle and referenced by the PA profile on the claim as .supportingInformation. The entire PAS bundle passed to the payer includes the QuestionnaireResponse Bundle.
 
-All four implementation guides should be used together to perform business functions related to prior authorization. However, all IGs other than PAS also offer functionality that is unrelated to prior authorization. The guides can function independently in several ways:
+All four implementation guides should be used together to perform business functions related to prior authorization.  [CMS Interoperability and Prior Authorization Final Rule CMS-0057-F](https://www.cms.gov/newsroom/fact-sheets/cms-interoperability-and-prior-authorization-final-rule-cms-0057-f) recommends (and CMS may in the future require) that payers implement the functionality defined in the CRD, DTR, and PAS guides within their APIs. However, all IGs other than PAS also offer functionality that is unrelated to prior authorization. The guides can function independently in several ways:
 
 * CRD can provide information unrelated to prior authorization and 'special documentation'. For example, providing an estimate of patient cost, suggesting appropriate use criteria, identifying duplicate therapies, etc.
 * DTR might be invoked directly by a clinician to validate documentation regarding an item or service that meets a responsible payer’s requirements.
