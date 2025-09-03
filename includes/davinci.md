@@ -7,6 +7,6 @@ The process that Da Vinci has adopted includes:
 4. piloting the standard
 5. supporting the production use of the IG to enable exchange of data to support interoperability for value-based care
 
-All Da Vinci work adheres to a common set of {% if site.data.fhir.ver.hrex != null %}[guiding principles]({{site.data.fhir.ver.hrex}}/davinci-guiding-principles.html){% else %}[guiding principles](davinci-guiding-principles.html){% endif %}.
+All Da Vinci work adheres to a common set of {% if site.data.fhir.ver.hrex != null %}[guiding principles]({{site.data.fhir.ver.hrex}}/davinci-guiding-principles.html){% else %}[guiding principles](http://hl7.org/fhir/us/davinci-hrex/davinci-guiding-principles.html){% endif %}.
 
 Additional information about Da Vinci, its members, the use cases, and the implementation guides being developed can all be found on the [HL7 website](http://www.hl7.org/about/davinci). Meeting minutes and other materials can be found on the [Da Vinci Confluence page](https://confluence.hl7.org/display/DVP).
