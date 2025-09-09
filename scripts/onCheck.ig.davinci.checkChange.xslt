@@ -18,7 +18,7 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:for-each select="/root/links/section[contains(@title, $version)]">
-            <xsl:if test="count(link[starts-with(@value,'https://jira.hl7.org/browse/FHIR-')])=0">
+            <xsl:if test="count(link[contains(@value,'://jira.hl7.org/browse/FHIR-')])=0">
               <xsl:call-template name="davinciIssue">
                 <xsl:with-param name="details" select="concat($prefix, 'does not include any Jira tracker items links for the section with title ', @title)"/>
               </xsl:call-template>

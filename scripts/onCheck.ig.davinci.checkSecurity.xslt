@@ -8,12 +8,12 @@
   <xsl:include href="handleIssues.xslt"/>
   <xsl:variable name="prefix" select="concat('The Security page (', $location, ') ')"/>
   <xsl:template match="/links">
-    <xsl:if test="count(descendant::link[(starts-with(@value,'http://hl7.org/fhir/us/davinci-hrex/') or starts-with(@value,'https://build.fhir.org/ig/HL7/davinci-ehrx/')) and contains(@value, 'security.html')])=0">
+    <xsl:if test="count(descendant::link[(contains(@value,'://hl7.org/fhir/us/davinci-hrex/') or contains(@value,'://build.fhir.org/ig/HL7/davinci-ehrx/')) and contains(@value, 'security.html')])=0">
       <xsl:call-template name="davinciIssue">
         <xsl:with-param name="details" select="concat($prefix, 'must include a reference to the HRex security.html page (with a SHALL comply).')"/>
       </xsl:call-template>
     </xsl:if>
-    <xsl:if test="count(descendant::link[@value='http://hl7.org/fhir/R4/security.html'])=0">
+    <xsl:if test="count(descendant::link[contains(@value,'://hl7.org/fhir/R4/security.html')])=0">
       <xsl:call-template name="davinciIssue">
         <xsl:with-param name="details" select="concat($prefix, 'should include a reference to the HL7 core security page (http://hl7.org/fhir/R4/security.html).')"/>
       </xsl:call-template>
