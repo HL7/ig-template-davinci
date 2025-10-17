@@ -30,7 +30,7 @@ Ensure conformance language page says "In order to conform to this implementatio
     </xslt>
   </target>
   <target name="onCheck.davinci.findFiles">
-    <property name="dir.output" value="${ig.root}/output"/>
+    <property name="dir.output" value="${ig.root}/output/en"/>
     <xslt basedir="${ig.root}" destdir="${ig.template}" extension=".properties" style="${ig.scripts}/onCheck.ig.davinci.getFileProps.xslt">
       <include name="input/includes/menu.xml"/>
       <include name="fsh-generated/includes/menu.xml"/>
