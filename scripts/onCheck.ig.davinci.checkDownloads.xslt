@@ -18,7 +18,7 @@
         <xsl:with-param name="details" select="concat($prefix, 'must include a link to download the text of the FHIR core spec - http://hl7.org/fhir/R4/fhir-spec.zip')"/>
       </xsl:call-template>
     </xsl:if>
-    <xsl:if test="count(descendant::link[@value='full-ig.zip'])=0">
+    <xsl:if test="count(descendant::link[@value='../full-ig.zip'])=0">
       <xsl:call-template name="davinciIssue">
         <xsl:with-param name="details" select="concat($prefix, 'must include a link to the full content of this IG: full-ig.zip')"/>
       </xsl:call-template>

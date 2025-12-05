@@ -48,7 +48,7 @@
               <xsl:with-param name="details" select="'The second menu item needs a carret indicating it is a dropdown.'"/>
             </xsl:call-template>
           </xsl:if>
-          <xsl:if test="self::*[@class!='dropdown' or count(h:a[@class='dropdown-toggle' and @data-toggle='dropdown' and @href='#'])!=1 or count(h:ul[@class='dropdown-menu']/h:li)=0]">
+          <xsl:if test="self::*[@class!='dropdown' or count(h:a[@class='dropdown-toggle' and @data-toggle='dropdown'])!=1 or count(h:ul[@class='dropdown-menu']/h:li)=0]">
             <xsl:call-template name="davinciIssue">
               <xsl:with-param name="details" select="'The second menu item (Background) must be a dropdown menu with children.'"/>
             </xsl:call-template>
@@ -92,7 +92,7 @@
               <xsl:with-param name="details" select="'The third menu item needs a carret indicating it is a dropdown.'"/>
             </xsl:call-template>
           </xsl:if>
-          <xsl:if test="self::*[@class!='dropdown' or count(h:a[@class='dropdown-toggle' and @data-toggle='dropdown' and @href='#'])!=1 or count(h:ul[@class='dropdown-menu']/h:li)=0]">
+          <xsl:if test="self::*[@class!='dropdown' or count(h:a[@class='dropdown-toggle' and @data-toggle='dropdown'])!=1 or count(h:ul[@class='dropdown-menu']/h:li)=0]">
             <xsl:call-template name="davinciIssue">
               <xsl:with-param name="details" select="'The third menu item (Specification) must be a dropdown menu with children.'"/>
             </xsl:call-template>
@@ -151,7 +151,7 @@
               <xsl:with-param name="details" select="'The Base Specs menu item needs a carret indicating it is a dropdown.'"/>
             </xsl:call-template>
           </xsl:if>
-          <xsl:if test="self::*[@class!='dropdown' or count(h:a[@class='dropdown-toggle' and @data-toggle='dropdown' and @href='#'])!=1 or count(h:ul[@class='dropdown-menu']/h:li)=0]">
+          <xsl:if test="self::*[@class!='dropdown' or count(h:a[@class='dropdown-toggle' and @data-toggle='dropdown'])!=1 or count(h:ul[@class='dropdown-menu']/h:li)=0]">
             <xsl:call-template name="davinciIssue">
               <xsl:with-param name="details" select="'The Base Specs menu item must be a dropdown menu with children.'"/>
             </xsl:call-template>
@@ -201,7 +201,7 @@
               <xsl:with-param name="details" select="'The Support menu item needs a carret indicating it is a dropdown.'"/>
             </xsl:call-template>
           </xsl:if>
-          <xsl:if test="self::*[@class!='dropdown' or count(h:a[@class='dropdown-toggle' and @data-toggle='dropdown' and @href='#'])!=1 or count(h:ul[@class='dropdown-menu']/h:li)=0]">
+          <xsl:if test="self::*[@class!='dropdown' or count(h:a[@class='dropdown-toggle' and @data-toggle='dropdown'])!=1 or count(h:ul[@class='dropdown-menu']/h:li)=0]">
             <xsl:call-template name="davinciIssue">
               <xsl:with-param name="details" select="'The Support menu item must be a dropdown menu with children.'"/>
             </xsl:call-template>
