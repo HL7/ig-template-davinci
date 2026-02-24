@@ -163,9 +163,9 @@
             </xsl:call-template>
           </xsl:if>
           <!-- HRex link -->
-          <xsl:if test="count(h:ul/h:li/h:a[(normalize-space(text())='HRex 1.1.0')])=0">
+          <xsl:if test="count(h:ul/h:li/h:a[(normalize-space(text())='HRex 1.2.0')])=0">
             <xsl:call-template name="davinciIssue">
-              <xsl:with-param name="details" select="'The Base Specs menu item must have a child called HRex 1.1.0.'"/>
+              <xsl:with-param name="details" select="'The Base Specs menu item must have a child called HRex 1.2.0.'"/>
             </xsl:call-template>
           </xsl:if>
           <!-- US Core links -->
