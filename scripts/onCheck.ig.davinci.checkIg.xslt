@@ -31,7 +31,7 @@
         <xsl:with-param name="details" select="'This IG does not include an explicit dependency on US Core 3.1.1.'"/>
       </xsl:call-template>
     </xsl:if>
-    <xsl:if test="not(f:definition/f:extension[@url='http://hl7.org/fhir/tools/StructureDefinition/ig-parameter' and f:extension[@url='code']/f:valueString/@value='shownav' and f:extension[@url='value']/f:valueString/@value='true'])">
+    <xsl:if test="not(f:definition/f:extension[@url='http://hl7.org/fhir/tools/StructureDefinition/ig-parameter' and f:extension[@url='code']/f:valueString/@value='shownav' and f:extension[@url='value']/f:valueString/@value='true'] or f:definition/f:parameter[f:code/@value='shownav']/f:value/@value='true')">
       <xsl:call-template name="davinciIssue">
         <xsl:with-param name="details" select="'Must have the IG parameter shownav=true (which is the default for Da Vinci, so remove the override setting it to false).'"/>
       </xsl:call-template>
