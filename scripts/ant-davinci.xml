@@ -13,7 +13,7 @@ mustSupport included on all elements in differential unless they have fixed valu
 mustSupport included on all type declarations
 Ensure conformance language page says "In order to conform to this implementation guide, a system SHALL conform to at least one of the CapabilityStatements listed here."
 -->
-  <loadfile property="htmlEntries" srcFile="htmlEntities.dtd"/>
+  <loadfile property="htmlEntries" srcFile="${ig.scripts}/htmlEntities.dtd"/>
   <target name="onLoad.updateIg" depends="onLoad.findSpreadsheets">
     <!-- Override base template to set additional parameters -->
     <xslt in="${onLoad.ig.source}xml" out="${onLoad.ig.dest}xml" style="${ig.scripts}/onLoad.davinci.xslt">

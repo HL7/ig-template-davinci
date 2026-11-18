@@ -48,6 +48,8 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:value-of select="concat($name, '_file=', $ref, '&#xa;')"/>
+    <xsl:if test="$ref!='' and string-length($ref)&lt;=50 and not(starts-with($ref, '.')) and translate($ref, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.', '')=''">
+      <xsl:value-of select="concat($name, '_file=', $ref, '&#xa;')"/>
+    </xsl:if>
  	</xsl:template>
 </xsl:stylesheet>
