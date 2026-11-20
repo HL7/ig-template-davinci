@@ -48,8 +48,11 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:if test="$ref!='' and string-length($ref)&lt;=50 and not(starts-with($ref, '.')) and translate($ref, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.', '')=''">
-      <xsl:value-of select="concat($name, '_file=', $ref, '&#xa;')"/>
+    <xsl:if test="$ref='' or string-length($ref)&gt;100 or starts-with($ref, '.') or translate($ref, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.', '')!=''">
+      <xsl:message terminate="yes">
+        <xsl:value-of select="concat('The menu link for the ', $name, ' page must be a plain file name of at most 100 characters using only the characters a-z, A-Z, 0-9, &quot;.&quot;, &quot;-&quot; and &quot;_&quot;, and not starting with &quot;.&quot; - found &quot;', $ref, '&quot;')"/>
+      </xsl:message>
     </xsl:if>
+    <xsl:value-of select="concat($name, '_file=', $ref, '&#xa;')"/>
  	</xsl:template>
 </xsl:stylesheet>
